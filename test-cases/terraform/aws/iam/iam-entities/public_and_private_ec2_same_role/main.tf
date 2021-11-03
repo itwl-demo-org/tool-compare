@@ -73,11 +73,6 @@ resource "aws_iam_instance_profile" "test_profile" {
   role = "${aws_iam_role.test_role.name}"
 }
   
-resource "aws_iam_instance_profile" "private_profile" {
-  name = "private_profile"
-  role = "${aws_iam_role.test_role.name}"
-}  
-
 resource "aws_iam_role_policy" "test_policy" {
   name = "test_policy"
   role = "${aws_iam_role.test_role.id}"
@@ -98,20 +93,16 @@ resource "aws_iam_role_policy" "test_policy" {
 EOF
 }
 
-
 resource "aws_instance" "pub_ins" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   subnet_id = module.vpc.public_subnets[0]
   iam_instance_profile = aws_iam_instance_profile.test_profile.name
-  tags = {
-    Name = "pub_ins"
-  }
 }
 
 resource "aws_instance" "priv_ins" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   subnet_id = module.vpc.private_subnets[0]
-  iam_instance_profile = aws_iam_instance_profile.private_profile.name
+  iam_instance_profile = aws_iam_instance_profile.test_profile.name
 }
