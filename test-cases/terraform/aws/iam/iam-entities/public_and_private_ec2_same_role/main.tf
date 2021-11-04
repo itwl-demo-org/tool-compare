@@ -98,6 +98,11 @@ resource "aws_instance" "pub_ins" {
   instance_type = "t2.micro"
   subnet_id = module.vpc.public_subnets[0]
   iam_instance_profile = aws_iam_instance_profile.test_profile.name
+  tags = {
+    Name = "pub_ins"
+    Env = "pro"
+  }
+
 }
 
 resource "aws_instance" "priv_ins" {
