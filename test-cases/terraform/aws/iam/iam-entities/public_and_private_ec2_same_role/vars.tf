@@ -1,4 +1,4 @@
-var "CLOUDRAIL_API_KEY" {}
-var "CLOUD_ACCOUNT_ID" {}
-var "TF_VAR_env_var" {}
-var "TF_VAR_a_var" {}
+variable "CLOUDRAIL_API_KEY" {}
+variable "CLOUD_ACCOUNT_ID" {}
+variable "TF_VAR_env_var" {}
+variable "TF_VAR_a_var" {}
