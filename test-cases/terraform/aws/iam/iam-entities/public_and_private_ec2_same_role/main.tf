@@ -106,7 +106,6 @@ resource "aws_instance" "pub_ins" {
   tags = {
     Name = "pub_ins"
     Env = "pro"
-    aTF_VAR = var.aTF_VAR
   }
 
 }
